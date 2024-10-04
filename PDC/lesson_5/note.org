@@ -1,0 +1,7 @@
+#+title: Lesson 5 (or 6?)
+
+* TODO later
++ richiedi credenziali cluster
+* PBS
++ Commands starts with `#PBS`
++ Usare solo *studenti* queue
