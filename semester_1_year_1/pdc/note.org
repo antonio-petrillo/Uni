@@ -1,0 +1,7 @@
+#+title: Note
+
+* Connessione al cluster
+Il cluster ha una versione di +mmerda+ obsoleta di openssh, per connettersi occorrono i seguenti parametri
+#+begin_src bash
+ssh -oKexAlgorithms=+diffie-hellman-group1-sha1 -oHostKeyAlgorithms=+ssh-rsa NOME-UTENTE@ui-studenti.scope.unina.it
+#+end_src
