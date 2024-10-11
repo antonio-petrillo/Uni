@@ -1,3 +1,6 @@
+// Author: Antonio Petrillo
+// Email: antonio.petrillo4@studenti.unina.it
+// Matricola: N97000496
 #include <omp.h>
 #include <math.h>
 
