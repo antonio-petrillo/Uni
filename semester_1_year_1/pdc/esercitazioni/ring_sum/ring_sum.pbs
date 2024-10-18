@@ -1,0 +1,22 @@
+#!/bin/bash
+
+#PBS -q studenti
+#PBS -l nodes=8:ppn=8
+#PBS -l mem=1GB
+#PBS -N ring_sum
+#PBS -o ring_sum.out
+#PBS -e ring_sum.err
+
+cat $PBS_NODEFILE
+cd $PBS_O_WORKDIR
+echo "working in $PBS_O_WORKDIR"
+
+sort -u $PBS_NODEFILE > hostlist
+NCPU=$(wc -l < hostlist)
+
+echo "Il job è in esecuzione sugli '$NCPU' nodi."
+cat hostfile
+
+MPI_DIR="/usr/lib64/openmpi/1.4-gcc/bin"
+$MPI_DIR/mpicc -o ring_sum main.c
+$MPI_DIR/mpiexec -np $NCPU -machinefile hostlist ring_sum
