@@ -1,0 +1,7 @@
+#+title: Note
+
+* TODO implementare
+ + [ ] versione bloccante `MPI_SEND, MPI_RECV`
+ + [ ] versione non-bloccante `MPI_ISEND, MPI_IRECV`
+ + [ ] misurare i tempi
+ + [ ] vedi traccia su slide (se le carica)

@@ -3,15 +3,24 @@
 
 typedef enum{ RING } tags;
 
+int sum(int* A, int N);
+
 int main(int argc, char **argv) {
+
+    MPI_Init(&argc, &argv);
+
+    MPI_Finalize();
+
+    return 0;
+}
+
+int sum(int* A, int N) {
 
     int nproc, rank;
     int array[10];
     int i, sum = 0, tmp;
 
     MPI_Status status;
-
-    MPI_Init(&argc, &argv);
 
     MPI_Comm_size(MPI_COMM_WORLD, &nproc);
     MPI_Comm_rank(MPI_COMM_WORLD, &rank);
@@ -31,7 +40,4 @@ int main(int argc, char **argv) {
 
     printf("Sum from process %d (of %d) := %d\n", rank, nproc, sum);
 
-    MPI_Finalize();
-
-    return 0;
 }
