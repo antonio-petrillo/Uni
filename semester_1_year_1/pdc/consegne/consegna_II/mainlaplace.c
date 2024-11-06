@@ -10,6 +10,7 @@ int main(int argc, char *argv[]) {
   MPI_Status status;
   double get_cur_time(), t1, t2;
   void laplace(float *, float *, float *, float *, int, int, int);
+  void laplace_nb(float *, float *, float *, float *, int, int, int);
 
   MPI_Init(&argc, &argv);
 
@@ -55,7 +56,7 @@ int main(int argc, char *argv[]) {
 
   t1 = get_cur_time();
 
-  laplace(A, Anew, daprev, danext, N, LD, Niter);
+  laplace_nb(A, Anew, daprev, danext, N, LD, Niter);
 
   t2 = get_cur_time();
 
