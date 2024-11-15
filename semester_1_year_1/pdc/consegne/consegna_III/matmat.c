@@ -90,12 +90,6 @@ void matmatjki(
     }
 }
 
-/* void matmatikj( */
-/*     int ldA, int ldB, int ldC, // leading dimension A, B, C */
-/*     double* A, double* B, double* C, // matrix A, B, C */
-/*     int N1, int N2, int N3 // size A, B, C */
-/*  ) { */
-
 void matmatblock(
     int ldA, int ldB, int ldC, // leading dimension A, B, C
     double* A, double* B, double* C, // matrix A, B, C

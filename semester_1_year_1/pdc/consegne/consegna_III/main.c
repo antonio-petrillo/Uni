@@ -27,7 +27,7 @@ int main(int argc, char *argv[]) {
 
     long N1 = 256, N2 = 256, N3 = 256;
     double start, end, diff;
-    printf("ORDER, SIZE, TIME, GFLOPS\n"); // gflops = 2 * n^3 / time * 10e9
+    printf("ORDER, SIZE, TIME, GFLOPS\n"); // gflops = 2 * n^3 / time * 10e-9
     while (N1 <= MAX_DIM) {
 
         COMPUTE("ijk", N1, N2, N3, A, B, C, MAX_DIM, MAX_DIM, MAX_DIM, matmatijk);
