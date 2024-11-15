@@ -13,10 +13,10 @@ void init_matrix(double* mat, int LD, int N);
 #define COMPUTE(s, n1, n2, n3, a, b, c, l1, l2, l3, fn) \
     do { \
         start = get_cur_time(); \
-        fn(n1, n2, n3, a, b, c, l1, l2, l3); \
+        fn(l1, l2, l3, a, b, c, n1, n2, n3); \
         end = get_cur_time(); \
         diff = end - start; \
-        printf("%s, %d, %lf, %.8e\n", s, n1, diff, n1 * n1 * n1 * 2 / diff * 10.0e-9); \
+        printf("%s, %lu, %lf, %.8e\n", s, n1, diff, n1 * n1 * n1 * 2 / diff * 10.0e-9); \
     } while (0)
 
 int main(int argc, char *argv[]) {
@@ -25,7 +25,7 @@ int main(int argc, char *argv[]) {
     double* B = (double*) calloc(MAX_DIM * MAX_DIM, sizeof(double));
     double* C = (double*) calloc(MAX_DIM * MAX_DIM, sizeof(double));
 
-    int N1 = 256, N2 = 256, N3 = 256;
+    long N1 = 256, N2 = 256, N3 = 256;
     double start, end, diff;
     printf("ORDER, SIZE, TIME, GFLOPS\n"); // gflops = 2 * n^3 / time * 10e9
     while (N1 <= MAX_DIM) {
@@ -36,6 +36,7 @@ int main(int argc, char *argv[]) {
         COMPUTE("jik", N1, N2, N3, A, B, C, MAX_DIM, MAX_DIM, MAX_DIM, matmatjik);
         COMPUTE("kij", N1, N2, N3, A, B, C, MAX_DIM, MAX_DIM, MAX_DIM, matmatkij);
         COMPUTE("jki", N1, N2, N3, A, B, C, MAX_DIM, MAX_DIM, MAX_DIM, matmatjki);
+        COMPUTE("block", N1, N2, N3, A, B, C, MAX_DIM, MAX_DIM, MAX_DIM, matmatblock);
 
         N1 += 256;
         N2 += 256;
