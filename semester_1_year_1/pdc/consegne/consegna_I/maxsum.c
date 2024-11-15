@@ -13,6 +13,7 @@ double maxsum(int N, int LD, double *A, int NT) {
 
 #pragma omp parallel private(local_max, id, sum, row, col)
   {
+    local_max = 0;
     id = omp_get_thread_num();
     for (row = portion * id; row < portion * (id + 1); row++) {
       sum = 0;
