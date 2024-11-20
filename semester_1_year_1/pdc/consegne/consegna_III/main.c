@@ -36,29 +36,6 @@ void assert_computation(double* mat, int LD, int N, char* strat);
         printf("block, %lu, %lf, %.8e\n", n1, diff, n1 * n1 * n1 * 2 / diff * 10.0e-9); \
         assert_computation(c, l3, n3, "block");\
     } while (0)
-/* #define COMPUTE(s, n1, n2, n3, a, b, c, l1, l2, l3, fn) \ */
-/*     do { \ */
-/*         init_matrix(a, l1, n1, 0); \ */
-/*         init_matrix(b, l2, n2, 0); \ */
-/*         init_matrix(c, l3, n3, 1); \ */
-/*         start = get_cur_time(); \ */
-/*         fn(l1, l2, l3, a, b, c, n1, n2, n3); \ */
-/*         end = get_cur_time(); \ */
-/*         diff = end - start; \ */
-/*         assert_computation(c, l3, n3, s);\ */
-/*     } while (0) */
-
-/* #define COMPUTE_BLOCK(n1, n2, n3, a, b, c, l1, l2, l3, dba, dbb, dbc) \ */
-/*     do { \ */
-/*         init_matrix(a, l1, n1, 0); \ */
-/*         init_matrix(b, l2, n2, 0); \ */
-/*         init_matrix(c, l3, n3, 1); \ */
-/*         start = get_cur_time(); \ */
-/*         matmatblock(l1, l2, l3, a, b, c, n1, n2, n3, dba, dbb, dbc); \ */
-/*         end = get_cur_time(); \ */
-/*         diff = end - start; \ */
-/*         assert_computation(c, l3, n3, "block");\ */
-/*     } while (0) */
 
 int main(int argc, char *argv[]) {
 
@@ -86,17 +63,9 @@ int main(int argc, char *argv[]) {
 }
 
 void init_matrix(double* mat, int LD, int N, int zero_out) {
-    /* int i,j; */
-    /* for (i = 0; i < N; i++) { */
-    /*     for (j = 0; j < N; j++) { */
-    /*         /\* mat[i * LD + j] = rand() % MAX_RNG; *\/ */
-    /*         mat[i * LD + j] = 1; */
-    /*     } */
-    /* } */
     int i,j;
     for (i = 0; i < LD; i++) {
         for (j = 0; j < LD; j++) {
-            /* mat[i * LD + j] = rand() % MAX_RNG; */
             if (zero_out) {
                 mat[i * LD + j] = 0;
             } else {
