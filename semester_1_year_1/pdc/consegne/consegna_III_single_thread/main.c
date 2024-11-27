@@ -20,7 +20,7 @@ void assert_computation(double* mat, int LD, int N, char* strat);
         fn(l1, l2, l3, a, b, c, n1, n2, n3); \
         end = get_cur_time(); \
         diff = end - start; \
-        printf("%s, %lu, %lf, %.8e\n", s, n1, diff, n1 * n1 * n1 * 2 / diff * 10.0e-9); \
+        printf("%s, %lu, %lf, %.8e\n", s, n1, diff, n1 * n2 * n3 * 2 / diff * 10.0e-9); \
         assert_computation(c, l3, n3, s);\
     } while (0)
 
@@ -33,7 +33,7 @@ void assert_computation(double* mat, int LD, int N, char* strat);
         matmatblock(l1, l2, l3, a, b, c, n1, n2, n3, dba, dbb, dbc); \
         end = get_cur_time(); \
         diff = end - start; \
-        printf("block, %lu, %lf, %.8e\n", n1, diff, n1 * n1 * n1 * 2 / diff * 10.0e-9); \
+        printf("block, %lu, %lf, %.8e\n", n1, diff, n1 * n2 * n3 * 2 / diff * 10.0e-9); \
         assert_computation(c, l3, n3, "block");\
     } while (0)
 
